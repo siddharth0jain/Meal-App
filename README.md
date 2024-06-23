@@ -1,4 +1,4 @@
-Website is deployed on netlify for demo purpose https://6677d67bfaf0e26b490f77fd--siddharth-meal-app.netlify.app/
+Website is deployed on netlify for demo purpose https://main--siddharth-meal-app.netlify.app/
 
 # Getting Started with Create React App
 
