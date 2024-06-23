@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Grid, Card, CardContent, Typography, Button, CircularProgress } from '@mui/material';
+import { Container, Grid, Card, CardContent, Typography, Button, CircularProgress, Alert } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { getAllCategories } from '../services/mealService';
 
@@ -7,13 +7,16 @@ const Menu = () => {
     const [categories, setCategories] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [showAlert, setShowAlert] = useState(false);
 
     useEffect(() => {
         const fetchCategories = async () => {
             try {
                 setLoading(true);
                 const data = await getAllCategories();
-                setCategories(data.categories);
+                const filteredCategories = data.categories.filter(category => category.strCategory.toLowerCase() !== 'beef');
+                setCategories(filteredCategories);
+                setShowAlert(true);
             } catch (err) {
                 setError('Failed to fetch categories. Please try again later.');
             } finally {
@@ -41,6 +44,11 @@ const Menu = () => {
 
     return (
         <Container maxWidth="md" sx={{ mt: 4 }}>
+            {showAlert && (
+                <Alert severity="info" onClose={() => setShowAlert(false)} sx={{ mb: 2 }}>
+                    Welcome to the menu! Please note that beef items have been respectfully removed for religious preferences.
+                </Alert>
+            )}
             <Typography variant="h4" component="h1" gutterBottom>
                 Menu Categories
             </Typography>
