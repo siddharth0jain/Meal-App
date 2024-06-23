@@ -1,3 +1,5 @@
+Website is deployed on netlify for demo purpose https://6677d67bfaf0e26b490f77fd--siddharth-meal-app.netlify.app/
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
